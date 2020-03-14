@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.App {
+  display: flex;
+}
+
+.counters {
+  width: 60%;
+}
+
+.bar {
+  width: 25%;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  background-color: #f3f2f2;
+}

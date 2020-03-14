@@ -1,0 +1,36 @@
+.bar {
+  padding: 50px 45px 0 45px;
+}
+
+.bar--title {
+  border-bottom: 2px solid #6a6a6a;
+  padding: 0 0 10px 0;
+  color: #6a6a6a;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.button--add {
+  color: white;
+  background-color: #f63552;
+  width: 150px;
+  height: 35px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 100px 0 45px 0;
+}
+
+.input-search {
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 3px;
+  border: 1px solid #707070;
+}
