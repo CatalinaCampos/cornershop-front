@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getCountersData } from "../../actions/counter";
+import Counter from "../Counter/Counter";
 import "./CountersBar.css";
 
 class CountersBar extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getCountersData());
-    console.log("render countersbar");
   }
+
   render() {
     const { counters } = this.props;
-    console.log("contadores", counters);
-    return <div>we</div>;
+    const mapCounter = counters.map((item, index) => {
+      return <Counter counter={item.count} key={item.id} position={index} />;
+    });
+    return <div className="counters-box">{mapCounter}</div>;
   }
 }
 

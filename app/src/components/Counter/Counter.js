@@ -3,15 +3,22 @@ import "./Counter.css";
 
 class Counter extends Component {
   render() {
+    const { counter, position } = this.props;
+    console.log(position);
     return (
-      <div className="rhombus">
+      <div
+        className={
+          position % 2 === 0 ? "rhombus rhombus--odd" : "rhombus rhombus--even"
+        }
+      >
         <div className="rhombus-inside">
           <div className="counter">
-            <button className="button button--decrement">-</button>
-            <p className="number">5</p>
-            <button className="button button--increment">+</button>
+            <button className="button-action button--decrement">-</button>
+            <p className="number">{counter}</p>
+            <button className="button-action button--increment">+</button>
           </div>
         </div>
+        {/* <div className="connect"></div> */}
       </div>
     );
   }

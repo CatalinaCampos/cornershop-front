@@ -1,8 +1,8 @@
 .rhombus {
   transform: rotate(45deg);
-  width: 300px;
-  height: 300px;
-  background-color: #ff0000;
+  width: 250px;
+  height: 250px;
+  /* background-color: #ff0000; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,15 +10,34 @@
   margin-left: 70px;
 }
 
-/* .rhombus--even {
+.connect {
+  position: absolute;
+  width: 50px;
+  height: 60px;
+  border: 1px solid gray;
+}
+
+.connect--even {
+  transform: rotate(90deg);
+}
+
+.rhombus--first {
+  margin-top: 30px;
+}
+
+.rhombus--even {
+  background-color: #00de52;
+  margin: -30px 0 0 465px;
 }
 
 .rhombus--odd {
-} */
+  background-color: #ff0000;
+  margin: -10px 0 0 235px;
+}
 
 .rhombus-inside {
-  width: 230px;
-  height: 230px;
+  width: 200px;
+  height: 200px;
   background-color: white;
   border-radius: 5px;
 }
@@ -26,10 +45,10 @@
 .counter {
   position: absolute;
   transform: rotate(-45deg);
-  width: 264px;
+  width: 200px;
   height: 60px;
-  top: 118px;
-  left: 17px;
+  top: 93px;
+  left: 23px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -48,6 +67,12 @@
   border-radius: 3px;
   border: 1px solid #707070;
 } */
+
+.button-action {
+  font-weight: bold;
+  border-radius: 3px;
+  border: none;
+}
 
 .button--increment {
   margin-left: 20px;

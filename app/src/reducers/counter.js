@@ -1,10 +1,10 @@
 import {
   GET_COUNTERS_REQUEST,
   GET_COUNTERS_SUCCESS,
-  GET_COUNTERS_FAILURE
-  // ADD_COUNTER_REQUEST,
-  // ADD_COUNTER_SUCCESS,
-  // ADD_COUNTER_FAILURE,
+  GET_COUNTERS_FAILURE,
+  ADD_COUNTER_REQUEST,
+  ADD_COUNTER_SUCCESS,
+  ADD_COUNTER_FAILURE
   // INCREMENT_COUNTER_REQUEST,
   // INCREMENT_COUNTER_SUCCESS,
   // INCREMENT_COUNTER_FAILURE,
@@ -19,6 +19,7 @@ import {
 const initialState = {
   isLoading: {
     getDataLoader: false,
+    addCounter: false,
     counterLoad: false
   },
   counters: []
@@ -34,8 +35,6 @@ const reducer = (state = initialState, action) => {
         }
       };
     case GET_COUNTERS_SUCCESS:
-      console.log(action);
-      console.log("reducer working");
       return {
         ...state,
         isLoading: {
@@ -48,6 +47,27 @@ const reducer = (state = initialState, action) => {
         ...state,
         isLoading: {
           getDataLoader: false
+        }
+      };
+    case ADD_COUNTER_REQUEST:
+      return {
+        ...state,
+        isLoading: {
+          addCounter: true
+        }
+      };
+    case ADD_COUNTER_SUCCESS:
+      return {
+        ...state,
+        isLoading: {
+          addCounter: false
+        }
+      };
+    case ADD_COUNTER_FAILURE:
+      return {
+        ...state,
+        isLoading: {
+          addCounter: false
         }
       };
     default:

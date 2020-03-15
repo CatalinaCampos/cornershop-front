@@ -10,19 +10,15 @@ function* get(route) {
   }).then(res => res.json());
 }
 
-function* post(data) {
-  const response = yield fetch(url, {
+function* post(route, params) {
+  return yield fetch(`${url}${route}`, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      title: data
-    })
-  });
-  console.log(response);
-  return yield response.status === 201;
+    body: JSON.stringify({ params })
+  }).then(res => res.json());
 }
 
 export const Api = {
