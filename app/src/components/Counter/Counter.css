@@ -43,11 +43,11 @@
   color: #6a6a6a;
 }
 
-.button {
+/* .button {
   font-weight: bold;
   border-radius: 3px;
   border: 1px solid #707070;
-}
+} */
 
 .button--increment {
   margin-left: 20px;

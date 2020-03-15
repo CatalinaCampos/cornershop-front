@@ -1,18 +1,31 @@
-const url = "https://localhost:3000/api/v1/";
+const url = "http://localhost:3000/api/v1";
 
-function* get() {
-  const response = yield fetch(url, {
+function* get(route) {
+  return yield fetch(`${url}${route}`, {
     method: "GET",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
+    }
+  }).then(res => res.json());
+}
+
+function* post(data) {
+  const response = yield fetch(url, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
     },
-    body: ""
+    body: JSON.stringify({
+      title: data
+    })
   });
-  const data = yield response.status === 200 ? JSON.parse(response) : [];
-  return data;
+  console.log(response);
+  return yield response.status === 201;
 }
 
 export const Api = {
-  get
+  get,
+  post
 };

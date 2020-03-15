@@ -7,10 +7,11 @@ class CountersBar extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getCountersData());
+    console.log("render countersbar");
   }
   render() {
     const { counters } = this.props;
-    console.log(counters);
+    console.log("contadores", counters);
     return <div>we</div>;
   }
 }

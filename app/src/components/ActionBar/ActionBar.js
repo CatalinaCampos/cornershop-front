@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Modal from "../Modal/Modal";
 import "./ActionBar.css";
 
 class ActionBar extends Component {
@@ -10,7 +11,7 @@ class ActionBar extends Component {
           <p className="title">wiiiii</p>
         </div>
         <div className="actions">
-          <button className="button button--add">ADD COUNTER</button>
+          <Modal />
           <input className="input-search" placeholder="Search" />
         </div>
         <div>

@@ -14,13 +14,6 @@
   margin: 0;
 }
 
-.button--add {
-  color: white;
-  background-color: #f63552;
-  width: 150px;
-  height: 35px;
-}
-
 .actions {
   display: flex;
   flex-direction: column;

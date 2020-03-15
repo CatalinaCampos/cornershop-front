@@ -2,7 +2,7 @@ export const GET_COUNTERS_REQUEST = "GET_COUNTERS_REQUEST";
 export const GET_COUNTERS_SUCCESS = "GET_COUNTERS_SUCCESS";
 export const GET_COUNTERS_FAILURE = "GET_COUNTERS_FAILURE";
 
-export const getCountersData = data => ({ type: GET_COUNTERS_REQUEST });
+export const getCountersData = data => ({ type: GET_COUNTERS_REQUEST, data });
 
 export const ADD_COUNTER_REQUEST = "ADD_COUNTER_REQUEST";
 export const ADD_COUNTER_SUCCESS = "ADD_COUNTER_SUCCESS";
