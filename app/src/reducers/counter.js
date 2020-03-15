@@ -1,7 +1,7 @@
 import {
-  GET_COUNTER_REQUEST,
-  GET_COUNTER_SUCCESS,
-  GET_COUNTER_FAILURE,
+  GET_COUNTERS_REQUEST,
+  GET_COUNTERS_SUCCESS,
+  GET_COUNTERS_FAILURE,
   ADD_COUNTER_REQUEST,
   ADD_COUNTER_SUCCESS,
   ADD_COUNTER_FAILURE,
@@ -18,33 +18,34 @@ import {
 
 const initialState = {
   isLoading: {
-    addLoad: false,
+    getDataLoader: false,
     counterLoad: false
   },
-  counters: 0
+  counters: {}
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_COUNTER_REQUEST:
+    case GET_COUNTERS_REQUEST:
       return {
         ...state,
         isLoading: {
-          addLoad: true
+          getDataLoader: true
         }
       };
-    case ADD_COUNTER_SUCCESS:
+    case GET_COUNTERS_SUCCESS:
       return {
         ...state,
         isLoading: {
-          addLoad: false
-        }
+          getDataLoader: false
+        },
+        counters: action.result
       };
-    case ADD_COUNTER_FAILURE:
+    case GET_COUNTERS_FAILURE:
       return {
         ...state,
         isLoading: {
-          addLoad: false
+          getDataLoader: false
         }
       };
     default:

@@ -8,7 +8,7 @@ import { Api } from "../services/api";
 
 function* getCounters() {
   try {
-    const getData = yield Api.getCountersFromApi();
+    const getData = yield Api.get();
     yield put({ type: GET_COUNTER_SUCCESS, receivedData: getData });
   } catch (e) {
     console.log(e);

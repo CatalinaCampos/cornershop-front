@@ -7,7 +7,7 @@ class ActionBar extends Component {
       <div>
         <div className="bar--title">
           <p className="title">03.</p>
-          <p className="title">Tree</p>
+          <p className="title">wiiiii</p>
         </div>
         <div className="actions">
           <button className="button button--add">ADD COUNTER</button>

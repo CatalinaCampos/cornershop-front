@@ -1,6 +1,6 @@
 const url = "https://localhost:3000/api/v1/";
 
-function* getCountersFromApi() {
+function* get() {
   const response = yield fetch(url, {
     method: "GET",
     headers: {
@@ -14,5 +14,5 @@ function* getCountersFromApi() {
 }
 
 export const Api = {
-  getCountersFromApi
+  get
 };

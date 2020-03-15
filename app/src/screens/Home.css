@@ -4,11 +4,12 @@ body {
 }
 
 .App {
-  display: flex;
 }
 
 .counters {
-  width: 60%;
+  width: 68%;
+  height: 100vh;
+  float: right;
 }
 
 .bar {

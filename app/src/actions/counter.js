@@ -2,11 +2,13 @@ export const GET_COUNTERS_REQUEST = "GET_COUNTERS_REQUEST";
 export const GET_COUNTERS_SUCCESS = "GET_COUNTERS_SUCCESS";
 export const GET_COUNTERS_FAILURE = "GET_COUNTERS_FAILURE";
 
-export const getCountersData = data => ({ type: GET_COUNTERS_REQUEST, data });
+export const getCountersData = data => ({ type: GET_COUNTERS_REQUEST });
 
 export const ADD_COUNTER_REQUEST = "ADD_COUNTER_REQUEST";
 export const ADD_COUNTER_SUCCESS = "ADD_COUNTER_SUCCESS";
 export const ADD_COUNTER_FAILURE = "ADD_COUNTER_FAILURE";
+
+export const addCounter = data => ({ type: ADD_COUNTER_REQUEST, data });
 
 export const INCREMENT_COUNTER_REQUEST = "INCREMENT_COUNTER_REQUEST";
 export const INCREMENT_COUNTER_SUCCESS = "INCREMENT_COUNTER_SUCCESS";
