@@ -11,18 +11,17 @@ import { Api } from "../services/api";
 
 function* getCounters() {
   try {
-    // console.log("sagas working");
     const getData = yield Api.get("/counters");
     yield put({ type: GET_COUNTERS_SUCCESS, result: getData });
-    // console.log("sagas", getData);
   } catch (e) {
     yield put({ type: GET_COUNTERS_FAILURE });
   }
 }
 
-function* addCounter() {
+function* addCounter(params) {
   try {
-    const getData = yield Api.post("/counter");
+    const getData = yield Api.post("/counter", { title: params.data });
+    console.log(params);
     yield put({ type: ADD_COUNTER_SUCCESS, result: getData });
   } catch (e) {
     yield put({ type: ADD_COUNTER_FAILURE });

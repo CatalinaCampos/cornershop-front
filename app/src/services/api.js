@@ -1,7 +1,7 @@
 const url = "http://localhost:3000/api/v1";
 
-function* get(route) {
-  return yield fetch(`${url}${route}`, {
+function get(route) {
+  return fetch(`${url}${route}`, {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -10,8 +10,8 @@ function* get(route) {
   }).then(res => res.json());
 }
 
-function* post(route, params) {
-  return yield fetch(`${url}${route}`, {
+function post(route, params = {}) {
+  return fetch(`${url}${route}`, {
     method: "POST",
     headers: {
       Accept: "application/json",

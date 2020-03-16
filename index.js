@@ -17,17 +17,6 @@ app.use(function(req, res, next) {
 
 app.use(require("body-parser").json());
 
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method"
-//   );
-//   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-//   res.header("Allow", "GET, POST, OPTIONS, PUT, DELETE");
-//   next();
-// });
-
 app.use(morgan("combined"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -49,6 +38,7 @@ app.get("/app.css", sendFile("app.css"));
 // =>   {id: "zxcv", title: "steve", count: 3}
 // => ]
 app.get("/api/v1/counters", function(req, res) {
+  console.log("get");
   res.json(counters.all());
 });
 
@@ -59,8 +49,9 @@ app.get("/api/v1/counters", function(req, res) {
 // =>   {id: "qwer", title: "bob",   count: 0}
 // => ]
 app.post("/api/v1/counter", function(req, res) {
-  console.log(req.body);
-  res.json(counters.create(req.body.title));
+  console.log(req.body.params.title);
+  console.log("post");
+  res.json(counters.create(req.body.params.title));
 });
 
 // [json] DELETE {id: "asdf"} /api/v1/counter
