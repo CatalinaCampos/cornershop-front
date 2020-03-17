@@ -5,7 +5,13 @@ import {
   GET_COUNTERS_FAILURE,
   ADD_COUNTER_REQUEST,
   ADD_COUNTER_SUCCESS,
-  ADD_COUNTER_FAILURE
+  ADD_COUNTER_FAILURE,
+  INCREMENT_COUNTER_REQUEST,
+  INCREMENT_COUNTER_SUCCESS,
+  INCREMENT_COUNTER_FAILURE,
+  DELETE_COUNTER_REQUEST,
+  DELETE_COUNTER_SUCCESS,
+  DELETE_COUNTER_FAILURE
 } from "../actions/counter";
 import { Api } from "../services/api";
 
@@ -28,9 +34,32 @@ function* addCounter(params) {
   }
 }
 
+function* incCounter(params) {
+  try {
+    const getData = yield Api.post(`/counter/inc`, { id: params.data });
+    console.log(getData);
+    yield put({ type: INCREMENT_COUNTER_SUCCESS, result: getData });
+  } catch (e) {
+    yield put({ type: INCREMENT_COUNTER_FAILURE });
+    console.log(e);
+  }
+}
+
+function* deleteCounter(params) {
+  try {
+    const getData = yield Api.deleteApi(`/counter/inc?id=${params.data}`);
+    console.log(params);
+    yield put({ type: DELETE_COUNTER_SUCCESS, result: getData });
+  } catch (e) {
+    yield put({ type: DELETE_COUNTER_FAILURE });
+  }
+}
+
 function* mySaga() {
   yield takeLatest(GET_COUNTERS_REQUEST, getCounters);
   yield takeLatest(ADD_COUNTER_REQUEST, addCounter);
+  yield takeLatest(DELETE_COUNTER_REQUEST, deleteCounter);
+  yield takeLatest(INCREMENT_COUNTER_REQUEST, incCounter);
 }
 
 export default mySaga;

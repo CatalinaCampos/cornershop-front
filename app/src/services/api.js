@@ -21,7 +21,19 @@ function post(route, params = {}) {
   }).then(res => res.json());
 }
 
+function deleteApi(route, params = {}) {
+  return fetch(`${url}${route}`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ params })
+  }).then(res => res.json());
+}
+
 export const Api = {
   get,
-  post
+  post,
+  deleteApi
 };

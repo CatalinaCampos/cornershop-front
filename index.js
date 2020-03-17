@@ -8,10 +8,12 @@ var counters = require("./lib/counters");
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", req.headers.origin);
+  // console.log(req.headers);
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
+  res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
   next();
 });
 
@@ -38,7 +40,6 @@ app.get("/app.css", sendFile("app.css"));
 // =>   {id: "zxcv", title: "steve", count: 3}
 // => ]
 app.get("/api/v1/counters", function(req, res) {
-  console.log("get");
   res.json(counters.all());
 });
 
@@ -49,8 +50,7 @@ app.get("/api/v1/counters", function(req, res) {
 // =>   {id: "qwer", title: "bob",   count: 0}
 // => ]
 app.post("/api/v1/counter", function(req, res) {
-  console.log(req.body.params.title);
-  console.log("post");
+  console.log(req.body.title);
   res.json(counters.create(req.body.params.title));
 });
 
@@ -60,7 +60,7 @@ app.post("/api/v1/counter", function(req, res) {
 // =>   {id: "qwer", title: "bob",   count: 0}
 // => ]
 app.delete("/api/v1/counter", function(req, res) {
-  res.json(counters.delete(req.body.id));
+  res.json(counters.delete(req.body.params.id));
 });
 
 // [json] POST {id: "qwer"} /api/v1/counter/inc
@@ -69,7 +69,7 @@ app.delete("/api/v1/counter", function(req, res) {
 // =>   {id: "qwer", title: "bob",   count: 1}
 // => ]
 app.post("/api/v1/counter/inc", function(req, res) {
-  res.json(counters.inc(req.body.id));
+  res.json(counters.inc(req.body.params.id));
 });
 
 // [json] POST {id: "zxcv"} /api/v1/counter/dec

@@ -3,8 +3,8 @@ import "./Counter.css";
 
 class Counter extends Component {
   render() {
-    const { counter, position } = this.props;
-    console.log(position);
+    const { counter, position, inc, id } = this.props;
+    // console.log(position);
     return (
       <div
         className={
@@ -15,7 +15,12 @@ class Counter extends Component {
           <div className="counter">
             <button className="button-action button--decrement">-</button>
             <p className="number">{counter}</p>
-            <button className="button-action button--increment">+</button>
+            <button
+              className="button-action button--increment"
+              onClick={() => inc(id)}
+            >
+              +
+            </button>
           </div>
         </div>
         {/* <div className="connect"></div> */}
