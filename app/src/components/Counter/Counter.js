@@ -3,7 +3,7 @@ import "./Counter.css";
 
 class Counter extends Component {
   render() {
-    const { counter, position, inc, id, dec } = this.props;
+    const { counter, position, inc, id, dec, deleteCounter } = this.props;
     // console.log(position);
     return (
       <div
@@ -11,6 +11,7 @@ class Counter extends Component {
           position % 2 === 0 ? "rhombus rhombus--odd" : "rhombus rhombus--even"
         }
       >
+        <button onClick={() => deleteCounter(id)}>X</button>
         <div className="rhombus-inside">
           <div className="counter">
             <button

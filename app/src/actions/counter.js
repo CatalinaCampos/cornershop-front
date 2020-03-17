@@ -25,3 +25,5 @@ export const decCounter = data => ({ type: DECREMENT_COUNTER_REQUEST, data });
 export const DELETE_COUNTER_REQUEST = "DELETE_COUNTER_REQUEST";
 export const DELETE_COUNTER_SUCCESS = "DELETE_COUNTER_SUCCESS";
 export const DELETE_COUNTER_FAILURE = "DELETE_COUNTER_FAILURE";
+
+export const deleteCounter = data => ({ type: DELETE_COUNTER_REQUEST, data });

@@ -22,7 +22,8 @@ const initialState = {
     addCounter: false,
     counterLoad: false,
     incCounter: false,
-    decCounter: false
+    decCounter: false,
+    deleteCounter: false
   },
   counters: []
 };
@@ -114,6 +115,28 @@ const reducer = (state = initialState, action) => {
         ...state,
         isLoading: {
           decCounter: false
+        }
+      };
+    case DELETE_COUNTER_REQUEST:
+      console.log("reducer add");
+      return {
+        ...state,
+        isLoading: {
+          deleteCounter: true
+        }
+      };
+    case DELETE_COUNTER_SUCCESS:
+      return {
+        ...state,
+        isLoading: {
+          deleteCounter: false
+        }
+      };
+    case DELETE_COUNTER_FAILURE:
+      return {
+        ...state,
+        isLoading: {
+          deleteCounter: false
         }
       };
     default:

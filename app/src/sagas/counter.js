@@ -57,22 +57,21 @@ function* decCounter(params) {
   }
 }
 
-// function* deleteCounter(params) {
-//   try {
-//     const getData = yield Api.deleteApi(`/counter`);
-//     console.log(params);
-//     yield put({ type: DELETE_COUNTER_SUCCESS, result: getData });
-//   } catch (e) {
-//     yield put({ type: DELETE_COUNTER_FAILURE });
-//   }
-// }
+function* deleteCounter(params) {
+  try {
+    const getData = yield Api.deleteApi("/counter", { id: params.data });
+    yield put({ type: DELETE_COUNTER_SUCCESS, result: getData });
+  } catch (e) {
+    yield put({ type: DELETE_COUNTER_FAILURE });
+  }
+}
 
 function* mySaga() {
   yield takeLatest(GET_COUNTERS_REQUEST, getCounters);
   yield takeLatest(ADD_COUNTER_REQUEST, addCounter);
   yield takeLatest(INCREMENT_COUNTER_REQUEST, incCounter);
   yield takeLatest(DECREMENT_COUNTER_REQUEST, decCounter);
-  // yield takeLatest(DELETE_COUNTER_REQUEST, deleteCounter);
+  yield takeLatest(DELETE_COUNTER_REQUEST, deleteCounter);
 }
 
 export default mySaga;
