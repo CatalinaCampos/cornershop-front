@@ -78,7 +78,7 @@ app.post("/api/v1/counter/inc", function(req, res) {
 // =>   {id: "qwer", title: "bob",   count: 1}
 // => ]
 app.post("/api/v1/counter/dec", function(req, res) {
-  res.json(counters.dec(req.body.id));
+  res.json(counters.dec(req.body.params.id));
 });
 
 app.get("*", sendFile("index.html"));

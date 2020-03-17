@@ -8,9 +8,9 @@ import {
   INCREMENT_COUNTER_REQUEST,
   INCREMENT_COUNTER_SUCCESS,
   INCREMENT_COUNTER_FAILURE,
-  // DECREMENT_COUNTER_REQUEST,
-  // DECREMENT_COUNTER_SUCCESS,
-  // DECREMENT_COUNTER_FAILURE,
+  DECREMENT_COUNTER_REQUEST,
+  DECREMENT_COUNTER_SUCCESS,
+  DECREMENT_COUNTER_FAILURE,
   DELETE_COUNTER_REQUEST,
   DELETE_COUNTER_SUCCESS,
   DELETE_COUNTER_FAILURE
@@ -20,7 +20,9 @@ const initialState = {
   isLoading: {
     getDataLoader: false,
     addCounter: false,
-    counterLoad: false
+    counterLoad: false,
+    incCounter: false,
+    decCounter: false
   },
   counters: []
 };
@@ -90,6 +92,28 @@ const reducer = (state = initialState, action) => {
         ...state,
         isLoading: {
           incCounter: false
+        }
+      };
+    case DECREMENT_COUNTER_REQUEST:
+      console.log("reducer add");
+      return {
+        ...state,
+        isLoading: {
+          decCounter: true
+        }
+      };
+    case DECREMENT_COUNTER_SUCCESS:
+      return {
+        ...state,
+        isLoading: {
+          decCounter: false
+        }
+      };
+    case DECREMENT_COUNTER_FAILURE:
+      return {
+        ...state,
+        isLoading: {
+          decCounter: false
         }
       };
     default:

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getCountersData, incCounter } from "../../actions/counter";
+import { getCountersData, incCounter, decCounter } from "../../actions/counter";
 import Counter from "../Counter/Counter";
 import "./CountersBar.css";
 
@@ -16,6 +16,12 @@ class CountersBar extends Component {
     console.log(id);
   };
 
+  decrementCounter = id => {
+    const { dispatch } = this.props;
+    dispatch(decCounter(id));
+    console.log(id);
+  };
+
   render() {
     const { counters } = this.props;
     const mapCounter = counters.map((item, index) => {
@@ -26,6 +32,7 @@ class CountersBar extends Component {
           id={item.id}
           position={index}
           inc={this.incrementCounter}
+          dec={this.decrementCounter}
         />
       );
     });
