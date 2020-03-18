@@ -27,3 +27,14 @@ export const DELETE_COUNTER_SUCCESS = "DELETE_COUNTER_SUCCESS";
 export const DELETE_COUNTER_FAILURE = "DELETE_COUNTER_FAILURE";
 
 export const deleteCounter = data => ({ type: DELETE_COUNTER_REQUEST, data });
+
+export const SET_SEARCH_TEXT = "SET_SEARCH_TEXT";
+
+export const setSearchText = text => ({ type: SET_SEARCH_TEXT, text });
+
+export const GET_COUNTERS_DATA_FILTERED = "GET_COUNTERS_DATA_FILTERED";
+
+export const getCountersDataFiltered = text => ({
+  type: GET_COUNTERS_DATA_FILTERED,
+  text
+});

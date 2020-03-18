@@ -13,7 +13,9 @@ import {
   DECREMENT_COUNTER_FAILURE,
   DELETE_COUNTER_REQUEST,
   DELETE_COUNTER_SUCCESS,
-  DELETE_COUNTER_FAILURE
+  DELETE_COUNTER_FAILURE,
+  SET_SEARCH_TEXT,
+  GET_COUNTERS_DATA_FILTERED
 } from "../actions/counter";
 
 const initialState = {
@@ -25,7 +27,9 @@ const initialState = {
     decCounter: false,
     deleteCounter: false
   },
-  counters: []
+  counters: [],
+  countersFiltered: [],
+  search: ""
 };
 
 const reducer = (state = initialState, action) => {
@@ -43,7 +47,8 @@ const reducer = (state = initialState, action) => {
         isLoading: {
           getDataLoader: false
         },
-        counters: action.result
+        counters: action.result,
+        countersFiltered: action.result
       };
     case GET_COUNTERS_FAILURE:
       return {
@@ -96,7 +101,6 @@ const reducer = (state = initialState, action) => {
         }
       };
     case DECREMENT_COUNTER_REQUEST:
-      console.log("reducer add");
       return {
         ...state,
         isLoading: {
@@ -118,7 +122,6 @@ const reducer = (state = initialState, action) => {
         }
       };
     case DELETE_COUNTER_REQUEST:
-      console.log("reducer add");
       return {
         ...state,
         isLoading: {
@@ -138,6 +141,20 @@ const reducer = (state = initialState, action) => {
         isLoading: {
           deleteCounter: false
         }
+      };
+    case SET_SEARCH_TEXT:
+      return {
+        ...state,
+        search: action.text
+      };
+    case GET_COUNTERS_DATA_FILTERED:
+      console.log(action.text);
+      return {
+        ...state,
+        countersFiltered: state.counters.filter(
+          counter =>
+            counter.title.toLowerCase().indexOf(action.text.search) > -1
+        )
       };
     default:
       return state;

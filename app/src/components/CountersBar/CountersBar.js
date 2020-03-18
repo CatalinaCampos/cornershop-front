@@ -11,31 +11,28 @@ import "./CountersBar.css";
 
 class CountersBar extends Component {
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getCountersData());
+    const { dispatch, search } = this.props;
+    dispatch(getCountersData({ search }));
   }
 
   incrementCounter = id => {
     const { dispatch } = this.props;
     dispatch(incCounter(id));
-    console.log(id);
   };
 
   decrementCounter = id => {
     const { dispatch } = this.props;
     dispatch(decCounter(id));
-    console.log(id);
   };
 
   deleteCounter = id => {
     const { dispatch } = this.props;
     dispatch(deleteCounter(id));
-    console.log(id);
   };
 
   render() {
-    const { counters } = this.props;
-    const mapCounter = counters.map((item, index) => {
+    const { countersFiltered } = this.props;
+    const mapCounter = countersFiltered.map((item, index) => {
       return (
         <Counter
           counter={item.count}
@@ -53,8 +50,8 @@ class CountersBar extends Component {
 }
 
 const mapStateToProps = state => {
-  const { counters } = state.counter;
-  return { counters };
+  const { countersFiltered, search } = state.counter;
+  return { countersFiltered, search };
 };
 
 export default connect(mapStateToProps)(CountersBar);

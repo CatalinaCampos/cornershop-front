@@ -9,6 +9,7 @@
   "author": "Javier Vasquez",
   "license": "ISC",
   "dependencies": {
+    "awesome-debounce-promise": "^2.1.0",
     "body-parser": "^1.16.1",
     "compression": "^1.6.2",
     "express": "^4.14.1",
