@@ -3,7 +3,7 @@ import "./Counter.css";
 
 class Counter extends Component {
   render() {
-    const { counter, position, inc, id, dec, deleteCounter } = this.props;
+    const { counter, position, inc, id, dec, deleteCounter, name } = this.props;
     // console.log(position);
     return (
       <div
@@ -21,6 +21,7 @@ class Counter extends Component {
               -
             </button>
             <p className="number">{counter}</p>
+            {name}
             <button
               className="button-action button--increment"
               onClick={() => inc(id)}

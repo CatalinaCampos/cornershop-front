@@ -38,3 +38,15 @@ export const getCountersDataFiltered = text => ({
   type: GET_COUNTERS_DATA_FILTERED,
   text
 });
+
+export const TOGGLE_SORT_COUNTERS_BY_TITLE = "TOGGLE_SORT_COUNTERS_BY_TITLE";
+
+export const toggleSortByTitle = () => ({
+  type: TOGGLE_SORT_COUNTERS_BY_TITLE
+});
+
+export const TOGGLE_SORT_COUNTERS_BY_AMOUNT = "TOGGLE_SORT_COUNTERS_BY_AMOUNT";
+
+export const toggleSortByAmount = () => ({
+  type: TOGGLE_SORT_COUNTERS_BY_AMOUNT
+});

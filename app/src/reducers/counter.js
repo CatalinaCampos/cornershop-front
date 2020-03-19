@@ -15,7 +15,9 @@ import {
   DELETE_COUNTER_SUCCESS,
   DELETE_COUNTER_FAILURE,
   SET_SEARCH_TEXT,
-  GET_COUNTERS_DATA_FILTERED
+  GET_COUNTERS_DATA_FILTERED,
+  TOGGLE_SORT_COUNTERS_BY_TITLE,
+  TOGGLE_SORT_COUNTERS_BY_AMOUNT
 } from "../actions/counter";
 
 const initialState = {
@@ -29,7 +31,15 @@ const initialState = {
   },
   counters: [],
   countersFiltered: [],
-  search: ""
+  search: "",
+  sortByTitle: "",
+  sortByAmount: ""
+};
+
+const filteredCounters = state => {
+  return state.counters.filter(
+    counter => counter.title.toLowerCase().indexOf(state.search) > -1
+  );
 };
 
 const reducer = (state = initialState, action) => {
@@ -79,7 +89,6 @@ const reducer = (state = initialState, action) => {
         }
       };
     case INCREMENT_COUNTER_REQUEST:
-      console.log("reducer add");
       return {
         ...state,
         isLoading: {
@@ -148,13 +157,54 @@ const reducer = (state = initialState, action) => {
         search: action.text
       };
     case GET_COUNTERS_DATA_FILTERED:
-      console.log(action.text);
       return {
         ...state,
-        countersFiltered: state.counters.filter(
-          counter =>
-            counter.title.toLowerCase().indexOf(action.text.search) > -1
-        )
+        countersFiltered: filteredCounters(state)
+      };
+    case TOGGLE_SORT_COUNTERS_BY_TITLE:
+      const sortTitle =
+        state.sortByTitle === ""
+          ? "asc"
+          : state.sortByTitle === "asc"
+          ? "desc"
+          : "";
+      return {
+        ...state,
+        sortByTitle: sortTitle,
+        countersFiltered:
+          sortTitle === ""
+            ? filteredCounters(state)
+            : state.countersFiltered
+                .slice()
+                .sort((a, b) =>
+                  sortTitle === "asc"
+                    ? a.title < b.title
+                      ? -1
+                      : Number(a.title > b.title)
+                    : a.title > b.title
+                    ? -1
+                    : Number(a.title < b.title)
+                )
+      };
+    case TOGGLE_SORT_COUNTERS_BY_AMOUNT:
+      console.log(state.countersFiltered);
+      const sortAmount =
+        state.sortByAmount === ""
+          ? "asc"
+          : state.sortByAmount === "asc"
+          ? "desc"
+          : "";
+      return {
+        ...state,
+        sortByAmount: sortAmount,
+        countersFiltered:
+          sortAmount === ""
+            ? filteredCounters(state)
+            : state.countersFiltered.slice().sort((a, b) => {
+                return sortAmount === "asc"
+                  ? a.count - b.count
+                  : b.count - a.count;
+              })
       };
     default:
       return state;

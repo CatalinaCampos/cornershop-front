@@ -38,6 +38,7 @@ class CountersBar extends Component {
           counter={item.count}
           key={item.id}
           id={item.id}
+          name={item.title}
           position={index}
           inc={this.incrementCounter}
           dec={this.decrementCounter}

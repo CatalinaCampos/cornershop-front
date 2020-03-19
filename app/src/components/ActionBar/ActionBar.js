@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Modal from "../Modal/Modal";
-import { setSearchText, getCountersDataFiltered } from "../../actions/counter";
+import {
+  setSearchText,
+  getCountersDataFiltered,
+  toggleSortByTitle,
+  toggleSortByAmount
+} from "../../actions/counter";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
 import "./ActionBar.css";
 
@@ -22,8 +27,18 @@ class ActionBar extends Component {
     dispatch(setSearchText(text));
   };
 
+  toggleSortTitle = () => {
+    const { dispatch } = this.props;
+    dispatch(toggleSortByTitle());
+  };
+
+  toggleSortAmount = () => {
+    const { dispatch } = this.props;
+    dispatch(toggleSortByAmount());
+  };
+
   render() {
-    const { counters } = this.props;
+    const { counters, sortByTitle, sortByAmount } = this.props;
     return (
       <div>
         <div className="bar--title">
@@ -39,8 +54,15 @@ class ActionBar extends Component {
           />
         </div>
         <div>
-          <button>Sort</button>
-          <button>Filter</button>
+          sort
+          {/* <button>Sort</button> */}
+          <button onClick={() => this.toggleSortTitle()}>
+            A-Z {sortByTitle}
+          </button>
+          <button onClick={() => this.toggleSortAmount()}>
+            0-infinito {sortByAmount}
+          </button>
+          {/* <button>Filter</button> */}
         </div>
       </div>
     );
@@ -48,8 +70,8 @@ class ActionBar extends Component {
 }
 
 const mapStateToProps = state => {
-  const { counters, search } = state.counter;
-  return { counters, search };
+  const { counters, search, sortByTitle, sortByAmount } = state.counter;
+  return { counters, search, sortByTitle, sortByAmount };
 };
 
 export default connect(mapStateToProps)(ActionBar);
