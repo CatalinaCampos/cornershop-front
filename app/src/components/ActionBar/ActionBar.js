@@ -5,7 +5,9 @@ import {
   setSearchText,
   getCountersDataFiltered,
   toggleSortByTitle,
-  toggleSortByAmount
+  toggleSortByAmount,
+  toggleFilterNumberSymbol,
+  filterNumber
 } from "../../actions/counter";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
 import "./ActionBar.css";
@@ -15,7 +17,6 @@ const Debounce = AwesomeDebouncePromise(value => value, 500);
 class ActionBar extends Component {
   componentDidUpdate(prevProps) {
     const { dispatch, search } = this.props;
-    console.log(search);
     if (search !== prevProps.search) {
       dispatch(getCountersDataFiltered({ search }));
     }
@@ -37,8 +38,24 @@ class ActionBar extends Component {
     dispatch(toggleSortByAmount());
   };
 
+  handleFilterNumber = async number => {
+    const { dispatch } = this.props;
+    // const num = await Debounce(number);
+    dispatch(filterNumber(number));
+  };
+
+  handleToggleFilterNumberSymbol = () => {
+    const { dispatch } = this.props;
+    dispatch(toggleFilterNumberSymbol());
+  };
+
   render() {
-    const { counters, sortByTitle, sortByAmount } = this.props;
+    const {
+      counters,
+      sortByTitle,
+      sortByAmount,
+      filterNumberSymbol
+    } = this.props;
     return (
       <div>
         <div className="bar--title">
@@ -63,6 +80,15 @@ class ActionBar extends Component {
             0-infinito {sortByAmount}
           </button>
           {/* <button>Filter</button> */}
+          Filter
+          <input
+            placeholder="filter"
+            type="number"
+            onChange={e => this.handleFilterNumber(e.target.value)}
+          />
+          <button onClick={() => this.handleToggleFilterNumberSymbol()}>
+            {filterNumberSymbol}
+          </button>
         </div>
       </div>
     );
@@ -70,8 +96,22 @@ class ActionBar extends Component {
 }
 
 const mapStateToProps = state => {
-  const { counters, search, sortByTitle, sortByAmount } = state.counter;
-  return { counters, search, sortByTitle, sortByAmount };
+  const {
+    counters,
+    search,
+    sortByTitle,
+    sortByAmount,
+    filterNumber,
+    filterNumberSymbol
+  } = state.counter;
+  return {
+    counters,
+    search,
+    sortByTitle,
+    sortByAmount,
+    filterNumber,
+    filterNumberSymbol
+  };
 };
 
 export default connect(mapStateToProps)(ActionBar);

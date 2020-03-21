@@ -4,7 +4,6 @@ import "./Counter.css";
 class Counter extends Component {
   render() {
     const { counter, position, inc, id, dec, deleteCounter, name } = this.props;
-    // console.log(position);
     return (
       <div
         className={

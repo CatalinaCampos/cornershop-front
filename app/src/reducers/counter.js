@@ -17,7 +17,9 @@ import {
   SET_SEARCH_TEXT,
   GET_COUNTERS_DATA_FILTERED,
   TOGGLE_SORT_COUNTERS_BY_TITLE,
-  TOGGLE_SORT_COUNTERS_BY_AMOUNT
+  TOGGLE_SORT_COUNTERS_BY_AMOUNT,
+  TOGGLE_FILTER_NUMBER_SYMBOL,
+  FILTER_NUMBER
 } from "../actions/counter";
 
 const initialState = {
@@ -33,7 +35,8 @@ const initialState = {
   countersFiltered: [],
   search: "",
   sortByTitle: "",
-  sortByAmount: ""
+  sortByAmount: "",
+  filterNumberSymbol: ">"
 };
 
 const filteredCounters = state => {
@@ -187,7 +190,6 @@ const reducer = (state = initialState, action) => {
                 )
       };
     case TOGGLE_SORT_COUNTERS_BY_AMOUNT:
-      console.log(state.countersFiltered);
       const sortAmount =
         state.sortByAmount === ""
           ? "asc"
@@ -204,6 +206,25 @@ const reducer = (state = initialState, action) => {
                 return sortAmount === "asc"
                   ? a.count - b.count
                   : b.count - a.count;
+              })
+      };
+    case TOGGLE_FILTER_NUMBER_SYMBOL:
+      return {
+        ...state,
+        filterNumberSymbol: state.filterNumberSymbol === ">" ? "<" : ">"
+      };
+    case FILTER_NUMBER:
+      return {
+        ...state,
+        countersFiltered:
+          action.num.length === 0
+            ? state.counters
+            : state.counters.slice().filter(counter => {
+                if (
+                  eval(counter.count + state.filterNumberSymbol + action.num)
+                ) {
+                  return counter;
+                }
               })
       };
     default:

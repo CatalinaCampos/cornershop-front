@@ -50,3 +50,16 @@ export const TOGGLE_SORT_COUNTERS_BY_AMOUNT = "TOGGLE_SORT_COUNTERS_BY_AMOUNT";
 export const toggleSortByAmount = () => ({
   type: TOGGLE_SORT_COUNTERS_BY_AMOUNT
 });
+
+export const TOGGLE_FILTER_NUMBER_SYMBOL = "TOGGLE_FILTER_NUMBER_SYMBOL";
+
+export const toggleFilterNumberSymbol = () => ({
+  type: TOGGLE_FILTER_NUMBER_SYMBOL
+});
+
+export const FILTER_NUMBER = "FILTER_NUMBER";
+
+export const filterNumber = num => ({
+  type: FILTER_NUMBER,
+  num
+});

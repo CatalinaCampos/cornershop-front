@@ -30,8 +30,8 @@ function* getCounters() {
 function* addCounter(params) {
   try {
     const getData = yield Api.post("/counter", { title: params.data });
-    console.log(params);
     yield put({ type: ADD_COUNTER_SUCCESS, result: getData });
+    yield put({ type: GET_COUNTERS_REQUEST });
   } catch (e) {
     yield put({ type: ADD_COUNTER_FAILURE });
   }
@@ -40,11 +40,10 @@ function* addCounter(params) {
 function* incCounter(params) {
   try {
     const getData = yield Api.post("/counter/inc", { id: params.data });
-    console.log(getData);
     yield put({ type: INCREMENT_COUNTER_SUCCESS, result: getData });
+    yield put({ type: GET_COUNTERS_REQUEST });
   } catch (e) {
     yield put({ type: INCREMENT_COUNTER_FAILURE });
-    console.log(e);
   }
 }
 
@@ -52,6 +51,7 @@ function* decCounter(params) {
   try {
     const getData = yield Api.post("/counter/dec", { id: params.data });
     yield put({ type: DECREMENT_COUNTER_SUCCESS, result: getData });
+    yield put({ type: GET_COUNTERS_REQUEST });
   } catch (e) {
     yield put({ type: DECREMENT_COUNTER_FAILURE });
   }

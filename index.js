@@ -50,7 +50,6 @@ app.get("/api/v1/counters", function(req, res) {
 // =>   {id: "qwer", title: "bob",   count: 0}
 // => ]
 app.post("/api/v1/counter", function(req, res) {
-  console.log(req.body.title);
   res.json(counters.create(req.body.params.title));
 });
 
