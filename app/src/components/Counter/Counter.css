@@ -1,93 +1,38 @@
-.rhombus {
-  transform: rotate(45deg);
-  width: 250px;
-  height: 250px;
-  /* background-color: #ff0000; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
-  margin-left: 70px;
-}
-
-.connect {
-  position: absolute;
-  width: 50px;
-  height: 60px;
-  border: 1px solid gray;
-}
-
-.connect--even {
-  transform: rotate(90deg);
-}
-
-.rhombus--first {
-  margin-top: 30px;
-}
-
-.rhombus--even {
-  background-color: #00de52;
-  margin: -30px 0 0 465px;
-}
-
-.rhombus--odd {
-  background-color: #ff0000;
-  margin: -10px 0 0 235px;
-}
-
-.rhombus-inside {
+.counter {
   width: 200px;
-  height: 200px;
-  background-color: white;
+  height: 130px;
+  border: 1px solid #cccbcb;
+  margin: 1em;
   border-radius: 5px;
 }
 
-.counter {
-  position: absolute;
-  transform: rotate(-45deg);
-  width: 200px;
-  height: 60px;
-  top: 93px;
-  left: 23px;
+.counter-title {
+  margin: 0;
   text-align: center;
+  padding: 1em;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.button--delete {
+  float: right;
+}
+
+.button--delete:hover {
+  background-color: #cccbcb;
+}
+
+.count {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 
-.number {
+.number-counter {
+  font-size: 40px;
   margin: 0;
-  font-size: 60px;
-  font-weight: bold;
-  color: #6a6a6a;
 }
 
-/* .button {
-  font-weight: bold;
-  border-radius: 3px;
-  border: 1px solid #707070;
-} */
-
-.button-action {
-  font-weight: bold;
-  border-radius: 3px;
-  border: none;
-}
-
-.button--increment {
-  margin-left: 20px;
-}
-
-.button--decrement {
-  margin-right: 20px;
-}
-
-.button--increment,
-.button--decrement {
-  width: 50px;
-  height: 80px;
-  border: none;
-  color: #6a6a6a;
-  background-color: transparent;
-  font-size: 30px;
+.action {
+  font-size: 25px;
 }

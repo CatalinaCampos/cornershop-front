@@ -23,14 +23,15 @@ class Modal extends Component {
 
   render() {
     const { modalShow } = this.state;
+    const { classN } = this.props;
     return (
-      <div>
-        <div>
+      <div className={classN}>
+        <div className="add-counter">
           <button
             className="button button--add"
             onClick={() => this.handleShow(true)}
           >
-            ADD COUNTER
+            +
           </button>
         </div>
         <ModalForm show={modalShow} onHide={() => this.setModalShow(false)} />

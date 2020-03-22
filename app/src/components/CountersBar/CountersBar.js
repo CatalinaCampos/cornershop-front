@@ -7,6 +7,7 @@ import {
   deleteCounter
 } from "../../actions/counter";
 import Counter from "../Counter/Counter";
+import Modal from "../Modal/Modal";
 import "./CountersBar.css";
 
 class CountersBar extends Component {
@@ -46,7 +47,12 @@ class CountersBar extends Component {
         />
       );
     });
-    return <div className="counters-box">{mapCounter}</div>;
+    return (
+      <div className="counters-box">
+        <Modal classN="counter" />
+        {mapCounter}
+      </div>
+    );
   }
 }
 

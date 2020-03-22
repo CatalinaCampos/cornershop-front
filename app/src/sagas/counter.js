@@ -61,6 +61,7 @@ function* deleteCounter(params) {
   try {
     const getData = yield Api.deleteApi("/counter", { id: params.data });
     yield put({ type: DELETE_COUNTER_SUCCESS, result: getData });
+    yield put({ type: GET_COUNTERS_REQUEST });
   } catch (e) {
     yield put({ type: DELETE_COUNTER_FAILURE });
   }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Modal from "../Modal/Modal";
 import {
   setSearchText,
   getCountersDataFiltered,
@@ -10,11 +9,17 @@ import {
   filterNumber
 } from "../../actions/counter";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
+import DropdownAction from "../Dropdown/DropdownAction.js";
 import "./ActionBar.css";
 
 const Debounce = AwesomeDebouncePromise(value => value, 500);
 
 class ActionBar extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
   componentDidUpdate(prevProps) {
     const { dispatch, search } = this.props;
     if (search !== prevProps.search) {
@@ -40,7 +45,6 @@ class ActionBar extends Component {
 
   handleFilterNumber = async number => {
     const { dispatch } = this.props;
-    // const num = await Debounce(number);
     dispatch(filterNumber(number));
   };
 
@@ -57,39 +61,28 @@ class ActionBar extends Component {
       filterNumberSymbol
     } = this.props;
     return (
-      <div>
-        <div className="bar--title">
-          <p className="title">{counters.length}.</p>
-          <p className="title">wiiiii</p>
-        </div>
-        <div className="actions">
-          <Modal />
-          <input
-            className="input-search"
-            placeholder="Search"
-            onChange={e => this.handleSearchRequest(e.target.value)}
-          />
-        </div>
-        <div>
-          sort
-          {/* <button>Sort</button> */}
-          <button onClick={() => this.toggleSortTitle()}>
+      <div className="action-bar">
+        <button className="button button--action">SORT</button>
+        <button className="button button--action">FILTER</button>
+        <input
+          className="input-search"
+          placeholder="Search"
+          onChange={e => this.handleSearchRequest(e.target.value)}
+        />
+        {/* <button onClick={() => this.toggleSortTitle()}>
             A-Z {sortByTitle}
-          </button>
-          <button onClick={() => this.toggleSortAmount()}>
+          </button> */}
+        {/* <button onClick={() => this.toggleSortAmount()}>
             0-infinito {sortByAmount}
-          </button>
-          {/* <button>Filter</button> */}
-          Filter
-          <input
+          </button> */}
+        {/* <input
             placeholder="filter"
             type="number"
             onChange={e => this.handleFilterNumber(e.target.value)}
-          />
-          <button onClick={() => this.handleToggleFilterNumberSymbol()}>
+          /> */}
+        {/* <button onClick={() => this.handleToggleFilterNumberSymbol()}>
             {filterNumberSymbol}
-          </button>
-        </div>
+          </button> */}
       </div>
     );
   }

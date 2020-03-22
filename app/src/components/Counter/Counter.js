@@ -5,31 +5,25 @@ class Counter extends Component {
   render() {
     const { counter, position, inc, id, dec, deleteCounter, name } = this.props;
     return (
-      <div
-        className={
-          position % 2 === 0 ? "rhombus rhombus--odd" : "rhombus rhombus--even"
-        }
-      >
-        {/* <button onClick={() => deleteCounter(id)}>X</button> */}
-        <div className="rhombus-inside">
-          <div className="counter">
-            <button
-              className="button-action button--decrement"
-              onClick={() => dec(id)}
-            >
-              -
-            </button>
-            <p className="number">{counter}</p>
-            {name}
-            <button
-              className="button-action button--increment"
-              onClick={() => inc(id)}
-            >
-              +
-            </button>
-          </div>
+      <div className="counter">
+        <div className="counter-header">
+          <button
+            className="button-action button--delete"
+            onClick={() => deleteCounter(id)}
+          >
+            X
+          </button>
+          <p className="counter-title">{name}</p>
         </div>
-        {/* <div className="connect"></div> */}
+        <div className="count">
+          <button className="button-action action" onClick={() => dec(id)}>
+            -
+          </button>
+          <p className="number-counter">{counter}</p>
+          <button className="button-action action" onClick={() => inc(id)}>
+            +
+          </button>
+        </div>
       </div>
     );
   }
