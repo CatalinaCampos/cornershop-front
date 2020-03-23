@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   setSearchText,
-  getCountersDataFiltered,
   toggleSortByTitle,
   toggleSortByAmount,
   toggleFilterNumberSymbol,
@@ -32,22 +31,14 @@ class ActionBar extends Component {
     const { collapseData } = this.state;
     collapseData.map((collapse, i) => {
       if (i === index) {
-        collapse.open = !collapse.open;
+        collapse.open = true;
       } else {
         collapse.open = false;
       }
       return collapse;
     });
-    console.log("force");
     this.forceUpdate();
   };
-
-  // componentDidUpdate(prevProps) {
-  //   const { dispatch, search } = this.props;
-  //   if (search !== prevProps.search) {
-  //     dispatch(getCountersDataFiltered({ search }));
-  //   }
-  // }
 
   handleSearchRequest = async name => {
     const { dispatch } = this.props;
@@ -78,7 +69,6 @@ class ActionBar extends Component {
   render() {
     const { sortByTitle, sortByAmount, filterNumberSymbol } = this.props;
     const { collapseData } = this.state;
-    console.log("render actionbar");
     return (
       <div className="action-bar">
         <div className="collapse-box">

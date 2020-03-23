@@ -3,7 +3,6 @@ import { ActionBar, CountersBar } from "../components";
 import "./Home.css";
 
 function Home() {
-  console.log("render home");
   return (
     <div className="App">
       <div className="title">
