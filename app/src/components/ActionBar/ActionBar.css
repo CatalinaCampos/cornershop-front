@@ -5,78 +5,103 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 1em 0 1em 0;
+  flex-direction: row;
+  padding: 1em 3em 1em 3em;
   height: auto;
   border-radius: 22px 22px 0 0;
   border: 1px solid #cccbcb;
 }
 
-.button--action {
-  width: 10%;
-  height: 30px;
-  min-width: 150px;
-}
-
 .input-search {
   width: 20%;
-  height: 30px;
-  border-radius: 5px;
+  height: 40px;
+  font-size: 18px;
+  background-color: #fff;
+  border: none;
+  border-bottom: 1px solid #cbcbcb;
+  padding: 1vw;
 }
 
-/* collapse */
-
-.faqs {
-  width: 50%;
-  max-width: 768px;
+.collapse-box {
+  max-width: 600px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: start;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
-.faq {
+.collapse {
   width: 200px;
 }
 
-.faq-question {
+.collapse-question {
   width: 100%;
 }
 
-.faqs .faq {
+.collapse-box .collapse {
   margin: 15px;
   padding: 8px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid #cbcbcb;
+  text-transform: uppercase;
 }
 
-.faqs .faq .faq-question {
+.collapse-box .collapse .collapse-question {
   position: relative;
-  font-size: 18px;
+  font-size: 15px;
   text-align: center;
-
-  -webkit-transition: 0.4s ease;
   transition: all 0.4s ease;
+  font-weight: 700;
+  color: #333333;
 }
 
-.faqs .faq .faq-answer {
+.collapse-box .collapse .collapse-answer {
   opacity: 0;
+  z-index: -100;
   max-height: 0;
   overflow-y: hidden;
-  -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
 }
 
-.faqs .faq.open .faq-question {
+.collapse-box .collapse.open .collapse-question {
   margin-bottom: 15px;
 }
 
-.faqs .faq.open .faq-question::after {
-  -webkit-transform: translateY(-50%) rotate(180deg);
+.collapse-box .collapse.open .collapse-question::after {
   transform: translateY(-50%) rotate(180deg);
 }
 
-.faqs .faq.open .faq-answer {
+.collapse-box .collapse.open .collapse-answer {
   max-height: 1000px;
   opacity: 1;
+}
+
+.collapse-box .collapse {
+  /* background: linear-gradient(to bottom right, #ff5858, #ffc300); */
+  font-weight: 600;
+}
+
+@media screen and (max-width: 550px) {
+  .action-bar {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .collapse-box {
+    display: flex;
+    justify-content: center;
+    width: auto;
+  }
+
+  .collapse {
+    width: 100%;
+  }
+
+  .input-search {
+    margin-bottom: 1em;
+    width: auto;
+  }
 }

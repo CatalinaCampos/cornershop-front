@@ -3,10 +3,11 @@ import { ActionBar, CountersBar } from "../components";
 import "./Home.css";
 
 function Home() {
+  console.log("render home");
   return (
     <div className="App">
       <div className="title">
-        <p>C O U N T E R S</p>
+        <p>COUNTERS</p>
       </div>
       <div className="bar">
         <ActionBar />

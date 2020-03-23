@@ -2,7 +2,7 @@ import React from "react";
 import { SortCollapse, FilterCollapse } from "./CollapseForm.js";
 import "../ActionBar/ActionBar.css";
 
-function Collapse({ faq, index, toggle, sort, filter }) {
+function Collapse({ collapse, index, toggle, sort, filter }) {
   const renderForm = type => {
     switch (type) {
       case "sort":
@@ -15,12 +15,12 @@ function Collapse({ faq, index, toggle, sort, filter }) {
   };
   return (
     <div
-      className={"faq " + (faq.open ? "open" : "")}
+      className={"collapse " + (collapse.open ? "open" : "")}
       key={index}
       onClick={() => toggle(index)}
     >
-      <div className="faq-question">{faq.type}</div>
-      <div className="faq-answer">{renderForm(faq.type)}</div>
+      <div className="collapse-question">{collapse.type}</div>
+      <div className="collapse-answer">{renderForm(collapse.type)}</div>
     </div>
   );
 }

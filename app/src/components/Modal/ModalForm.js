@@ -24,10 +24,9 @@ class ModalForm extends Component {
         className={modalShow ? "modal-container is-active" : "modal-container"}
       >
         <div className="modal-content">
-          <button className="close-button" onClick={() => toggle(false)}>
-            x
-          </button>
-          <h3>Add counter</h3>
+          <div className="header">
+            <h3>ADD COUNTER</h3>
+          </div>
           <div className="box-body">
             <input
               placeholder="Name"
@@ -35,10 +34,17 @@ class ModalForm extends Component {
               onChange={e => this.setState({ title: e.target.value })}
             />
           </div>
-          <div className="box-footer">
+          <div className="modal-footer">
+            <button className="close-button" onClick={() => toggle(false)}>
+              Cancel
+            </button>
             <button
-              className="button button--create"
-              onClick={() => this.newCounter(title)}
+              className="create-button"
+              onClick={() => {
+                this.newCounter(title);
+                toggle(false);
+              }}
+              disabled={!title}
             >
               Create
             </button>

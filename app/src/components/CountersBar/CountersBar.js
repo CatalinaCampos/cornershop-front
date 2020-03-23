@@ -4,7 +4,8 @@ import {
   getCountersData,
   incCounter,
   decCounter,
-  deleteCounter
+  deleteCounter,
+  getCountersDataFiltered
 } from "../../actions/counter";
 import Counter from "../Counter/Counter";
 import Modal from "../Modal/Modal";
@@ -14,6 +15,13 @@ class CountersBar extends Component {
   componentDidMount() {
     const { dispatch, search } = this.props;
     dispatch(getCountersData({ search }));
+  }
+
+  componentDidUpdate(prevProps) {
+    const { dispatch, search } = this.props;
+    if (search !== prevProps.search) {
+      dispatch(getCountersDataFiltered({ search }));
+    }
   }
 
   incrementCounter = id => {

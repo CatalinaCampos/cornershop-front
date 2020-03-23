@@ -1,4 +1,4 @@
-import React, { Component, forwardRef } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   setSearchText,
@@ -30,23 +30,24 @@ class ActionBar extends Component {
 
   toggleCollapse = index => {
     const { collapseData } = this.state;
-    collapseData.map((faq, i) => {
+    collapseData.map((collapse, i) => {
       if (i === index) {
-        faq.open = !faq.open;
+        collapse.open = !collapse.open;
       } else {
-        faq.open = false;
+        collapse.open = false;
       }
-      return faq;
+      return collapse;
     });
+    console.log("force");
     this.forceUpdate();
   };
 
-  componentDidUpdate(prevProps) {
-    const { dispatch, search } = this.props;
-    if (search !== prevProps.search) {
-      dispatch(getCountersDataFiltered({ search }));
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   const { dispatch, search } = this.props;
+  //   if (search !== prevProps.search) {
+  //     dispatch(getCountersDataFiltered({ search }));
+  //   }
+  // }
 
   handleSearchRequest = async name => {
     const { dispatch } = this.props;
@@ -75,20 +76,17 @@ class ActionBar extends Component {
   };
 
   render() {
-    const {
-      counters,
-      sortByTitle,
-      sortByAmount,
-      filterNumberSymbol
-    } = this.props;
+    const { sortByTitle, sortByAmount, filterNumberSymbol } = this.props;
     const { collapseData } = this.state;
+    console.log("render actionbar");
     return (
       <div className="action-bar">
-        <div className="faqs">
-          {collapseData.map((faq, i) => {
+        <div className="collapse-box">
+          {collapseData.map((collapse, i) => {
             return (
               <Collapse
-                faq={faq}
+                key={i}
+                collapse={collapse}
                 index={i}
                 toggle={this.toggleCollapse}
                 sort={{
@@ -118,16 +116,12 @@ class ActionBar extends Component {
 
 const mapStateToProps = state => {
   const {
-    counters,
-    search,
     sortByTitle,
     sortByAmount,
     filterNumber,
     filterNumberSymbol
   } = state.counter;
   return {
-    counters,
-    search,
     sortByTitle,
     sortByAmount,
     filterNumber,
