@@ -1,38 +1,151 @@
 .counter {
-  width: 200px;
-  height: 130px;
+  position: relative;
+  width: 250px;
+  height: 230px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem;
   border: 1px solid #cccbcb;
-  margin: 1em;
-  border-radius: 5px;
 }
 
-.counter-title {
-  margin: 0;
+.container {
+  position: relative;
+}
+
+.container .card {
+  position: relative;
+  width: 250px;
+  height: 230px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #cccbcb;
+  overflow: hidden;
+  margin: 1rem;
+}
+
+.container .card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, #ff5858, #cc2e5d);
+  clip-path: circle(150px at 80% 20%);
+  transition: 0.5s ease-in-out;
+}
+
+.container .card:hover:before {
+  clip-path: circle(300px at 80% 20%);
+}
+
+h1 {
   text-align: center;
-  padding: 1em;
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 70px;
 }
 
-.button--delete {
-  float: right;
+.container .card .imgBx {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 100%;
+  height: 140px;
+  transition: 0.5s;
 }
 
-.button--delete:hover {
-  background-color: #cccbcb;
+.container .card:hover .imgBx {
+  top: 30%;
+  transform: translateY(0%);
 }
 
-.count {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+.container .card:hover .imgBx h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170px;
+  text-align: center;
 }
 
-.number-counter {
-  font-size: 40px;
-  margin: 0;
+.container .card .button-less {
+  opacity: 0;
+  position: absolute;
+  top: 22%;
+  left: 30%;
+  width: 20px;
+  transform: translate(-50%, -50%);
 }
 
-.action {
-  font-size: 25px;
+.container .card:hover .button-less {
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  z-index: 10;
+}
+
+.container .card .button-delete {
+  opacity: 0;
+  position: absolute;
+  top: 2%;
+  left: 93%;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+}
+
+.container .card:hover .button-delete {
+  opacity: 1;
+  position: absolute;
+  top: 2%;
+  left: 93%;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  z-index: 20;
+}
+
+.container .card .button-plus {
+  opacity: 0;
+  position: absolute;
+  top: 23%;
+  left: 71%;
+  width: 20px;
+  transform: translate(-50%, -50%);
+}
+
+.container .card:hover .button-plus {
+  opacity: 1;
+  position: absolute;
+  top: 51%;
+  left: 71%;
+}
+
+.button-less,
+.button-plus {
+  border: none;
+  background-color: transparent;
+  font-size: 35px;
+}
+
+.container .card .contentBx {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  transition: 1s;
+}
+
+.container .card:hover .contentBx {
+  height: 210px;
+}
+
+.container .card .contentBx h2 {
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: black;
+  top: 15%;
 }

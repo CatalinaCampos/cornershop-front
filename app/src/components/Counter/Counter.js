@@ -3,26 +3,25 @@ import "./Counter.css";
 
 class Counter extends Component {
   render() {
-    const { counter, position, inc, id, dec, deleteCounter, name } = this.props;
+    const { counter, inc, id, dec, deleteCounter, name } = this.props;
     return (
-      <div className="counter">
-        <div className="counter-header">
-          <button
-            className="button-action button--delete"
-            onClick={() => deleteCounter(id)}
-          >
-            X
+      <div className="container">
+        <div className="card">
+          <button className="button-delete" onClick={() => deleteCounter(id)}>
+            x
           </button>
-          <p className="counter-title">{name}</p>
-        </div>
-        <div className="count">
-          <button className="button-action action" onClick={() => dec(id)}>
-            -
-          </button>
-          <p className="number-counter">{counter}</p>
-          <button className="button-action action" onClick={() => inc(id)}>
-            +
-          </button>
+          <div className="imgBx">
+            <button className="button-less" onClick={() => dec(id)}>
+              -
+            </button>
+            <h1>{counter}</h1>
+            <button className="button-plus" onClick={() => inc(id)}>
+              +
+            </button>
+          </div>
+          <div className="contentBx">
+            <h2>{name}</h2>
+          </div>
         </div>
       </div>
     );

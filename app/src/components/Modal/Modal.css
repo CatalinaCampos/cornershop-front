@@ -4,14 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(to bottom right, #ff5858, #cc2e5d);
-}
-
 .open-modal {
   font-size: 60px;
   background-color: transparent;
@@ -39,6 +31,7 @@ body {
   visibility: hidden;
   transform: scale(1.1);
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  z-index: 100000;
 }
 
 .modal-content {
