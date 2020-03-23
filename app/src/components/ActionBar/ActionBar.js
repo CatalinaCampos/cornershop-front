@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, forwardRef } from "react";
 import { connect } from "react-redux";
 import {
   setSearchText,
@@ -9,7 +9,7 @@ import {
   filterNumber
 } from "../../actions/counter";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
-import DropdownAction from "../Dropdown/DropdownAction.js";
+import Collapse from "../Collapse/Collapse.js";
 import "./ActionBar.css";
 
 const Debounce = AwesomeDebouncePromise(value => value, 500);
@@ -17,8 +17,29 @@ const Debounce = AwesomeDebouncePromise(value => value, 500);
 class ActionBar extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      collapseData: [
+        {
+          type: "sort",
+          open: false
+        },
+        { type: "filter", open: false }
+      ]
+    };
   }
+
+  toggleCollapse = index => {
+    const { collapseData } = this.state;
+    collapseData.map((faq, i) => {
+      if (i === index) {
+        faq.open = !faq.open;
+      } else {
+        faq.open = false;
+      }
+      return faq;
+    });
+    this.forceUpdate();
+  };
 
   componentDidUpdate(prevProps) {
     const { dispatch, search } = this.props;
@@ -60,29 +81,36 @@ class ActionBar extends Component {
       sortByAmount,
       filterNumberSymbol
     } = this.props;
+    const { collapseData } = this.state;
     return (
       <div className="action-bar">
-        <button className="button button--action">SORT</button>
-        <button className="button button--action">FILTER</button>
+        <div className="faqs">
+          {collapseData.map((faq, i) => {
+            return (
+              <Collapse
+                faq={faq}
+                index={i}
+                toggle={this.toggleCollapse}
+                sort={{
+                  sortTitle: this.toggleSortTitle,
+                  sortByTitle: sortByTitle,
+                  sortAmount: this.toggleSortAmount,
+                  sortByAmount: sortByAmount
+                }}
+                filter={{
+                  filterNumber: this.handleFilterNumber,
+                  toggleFilterNumber: this.handleToggleFilterNumberSymbol,
+                  filterNumberSymbol: filterNumberSymbol
+                }}
+              />
+            );
+          })}
+        </div>
         <input
           className="input-search"
           placeholder="Search"
           onChange={e => this.handleSearchRequest(e.target.value)}
         />
-        {/* <button onClick={() => this.toggleSortTitle()}>
-            A-Z {sortByTitle}
-          </button> */}
-        {/* <button onClick={() => this.toggleSortAmount()}>
-            0-infinito {sortByAmount}
-          </button> */}
-        {/* <input
-            placeholder="filter"
-            type="number"
-            onChange={e => this.handleFilterNumber(e.target.value)}
-          /> */}
-        {/* <button onClick={() => this.handleToggleFilterNumberSymbol()}>
-            {filterNumberSymbol}
-          </button> */}
       </div>
     );
   }

@@ -9,32 +9,26 @@ class Modal extends Component {
     };
   }
 
-  setModalShow = state => {
+  toggleCollapse = state => {
     this.setState({
       modalShow: state
     });
   };
 
-  handleShow = () => {
-    this.setState({
-      modalShow: true
-    });
-  };
-
   render() {
-    const { modalShow } = this.state;
     const { classN } = this.props;
+    const { modalShow } = this.state;
     return (
       <div className={classN}>
         <div className="add-counter">
           <button
-            className="button button--add"
-            onClick={() => this.handleShow(true)}
+            className="open-modal"
+            onClick={() => this.toggleCollapse(true)}
           >
             +
           </button>
         </div>
-        <ModalForm show={modalShow} onHide={() => this.setModalShow(false)} />
+        <ModalForm toggle={this.toggleCollapse} modalShow={modalShow} />
       </div>
     );
   }

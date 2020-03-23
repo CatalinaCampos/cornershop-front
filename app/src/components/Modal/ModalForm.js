@@ -17,13 +17,11 @@ class ModalForm extends Component {
   };
 
   render() {
-    const { onHide, show } = this.props;
+    const { modalShow, toggle } = this.props;
     const { title } = this.state;
-    if (!show) {
-      return null;
-    }
+    console.log(modalShow);
     return (
-      <div className="box-wrapper">
+      <div className={modalShow ? "modal is-active" : "modal"}>
         <h3>Add counter</h3>
         <div className="box-body">
           <input
@@ -33,7 +31,7 @@ class ModalForm extends Component {
           />
         </div>
         <div className="box-footer">
-          <button className="btn-cancel" onClick={onHide}>
+          <button className="btn-cancel" onClick={() => toggle(false)}>
             Cancel
           </button>
           <button
