@@ -30,9 +30,11 @@ function sendFile(name) {
   };
 }
 
-app.get("/", sendFile("index.html"));
-app.get("/app.js", sendFile("app.js"));
-app.get("/app.css", sendFile("app.css"));
+// app.get("/", sendFile("index.html"));
+// app.get("/app.js", sendFile("app.js"));
+// app.get("/app.css", sendFile("app.css"));
+
+app.use(express.static("app/build"));
 
 // [json] GET /api/v1/counters
 // => [

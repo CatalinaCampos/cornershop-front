@@ -1,5 +1,13 @@
 # Cornershop Frontend Test
 
+## Run proyect
+
+```
+$ npm install
+$ npm run build
+$ npm start
+```
+
 ## Before you begin
 
 You will need to create a repository using the base project that we provided. After this, upload it to Github, and invite
